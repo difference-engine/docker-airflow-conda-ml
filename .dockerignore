@@ -1,0 +1,12 @@
+.git
+.gitignore
+.semaphore-cache
+log/
+tmp/
+coverage/
+docker-compose*
+Dockerfile*
+README.md
+/plugins
+/dags
+/pgdata

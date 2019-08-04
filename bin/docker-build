@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker build -t diffengineai/airflow-conda-ml . && docker system prune -f
+
