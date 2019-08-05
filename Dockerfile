@@ -1,4 +1,4 @@
-FROM continuumio/anaconda3:2019.07
+FROM continuumio/miniconda3:4.6.14
 
 # diffengineai/airflow-conda-ml
 LABEL maintainer="difference-engine"
@@ -30,7 +30,7 @@ ENV LC_ALL en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
 ENV LC_MESSAGES en_US.UTF-8
 
-ENV PATH /opt/conda/envs/env/bin:/opt/conda/bin:$PATH
+ENV PATH /opt/conda/envs/inference/bin:/opt/conda/bin:$PATH
 
 RUN set -ex \
     && buildDeps=' \
@@ -50,11 +50,15 @@ RUN set -ex \
         build-essential \
         default-libmysqlclient-dev \
         apt-utils \
+        xauth \
         sudo \
+        tree \
         curl \
         rsync \
         netcat \
         locales \
+        iptables \
+        openssh-client \
     && sed -i 's/^# en_US.UTF-8 UTF-8$/en_US.UTF-8 UTF-8/g' /etc/locale.gen \
     && locale-gen \
     && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 \
@@ -80,7 +84,7 @@ RUN groupadd -g ${GROUP_ID} airflow \
 RUN conda init bash \
     && su - airflow -c 'conda init bash' \
     && echo '# Always activate conda' >> ~/.bashrc \
-    && echo '. /opt/conda/bin/activate env' >> ~/.bashrc \
+    && echo '. /opt/conda/bin/activate inference' >> ~/.bashrc \
     && . ~/.bashrc \
     && pip install -U pip setuptools wheel \
     && rm -rf \
@@ -94,7 +98,7 @@ COPY scripts/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
 RUN echo '# Always activate conda' >> ${AIRFLOW_USER_HOME}/.bashrc \
-    && echo '. /opt/conda/bin/activate env' >> ${AIRFLOW_USER_HOME}/.bashrc
+    && echo '. /opt/conda/bin/activate inference' >> ${AIRFLOW_USER_HOME}/.bashrc
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 RUN echo '%sudo  ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers
 

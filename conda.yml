@@ -1,11 +1,11 @@
-name: env
+name: inference
 channels:
   - conda-forge
   - defaults
 dependencies:
   - _libgcc_mutex=0.1
   - absl-py=0.7.1
-  - altair=3.1.0
+  - appdirs=1.4.3
   - argh=0.26.2
   - asn1crypto=0.24.0
   - astor=0.7.1
@@ -14,18 +14,20 @@ dependencies:
   - attrs=19.1.0
   - autopep8=1.4.4
   - backcall=0.1.0
+  - bandit=1.6.0
   - bcrypt=3.1.6
-  - binutils_impl_linux-64=2.31.1
-  - binutils_linux-64=2.31.1
+  - black=19.3b0
   - bleach=3.1.0
   - c-ares=1.15.0
   - ca-certificates=2019.6.16
   - certifi=2019.6.16
   - cffi=1.12.3
+  - click=7.0
+  - colorama=0.4.1
   - coverage=4.5.4
-  - cryptography=2.5
+  - cryptography=2.7
   - cycler=0.10.0
-  - dbus=1.13.2
+  - dbus=1.13.6
   - decorator=4.4.0
   - defusedxml=0.5.0
   - django=2.2.4
@@ -47,19 +49,18 @@ dependencies:
   - fontconfig=2.13.1
   - freetype=2.10.0
   - gast=0.2.2
-  - gcc_impl_linux-64=7.3.0
-  - gcc_linux-64=7.3.0
   - gettext=0.19.8.1
-  - glib=2.56.2
-  - grpcio=1.16.0
-  - gst-plugins-base=1.14.0
-  - gstreamer=1.14.0
+  - gitdb2=2.0.5
+  - gitpython=2.1.13
+  - glib=2.58.3
+  - grpcio=1.16.1
+  - gst-plugins-base=1.14.5
+  - gstreamer=1.14.5
   - gunicorn=19.9.0
-  - gxx_impl_linux-64=7.3.0
-  - gxx_linux-64=7.3.0
   - h5py=2.9.0
   - hdf5=1.10.4
-  - icu=58.2
+  - icu=64.2
+  - idna=2.8
   - importlib_metadata=0.18
   - ipykernel=5.1.1
   - ipython=7.7.0
@@ -71,10 +72,7 @@ dependencies:
   - json5=0.8.5
   - jsonschema=3.0.2
   - jupyter_client=5.3.1
-  - jupyter_contrib_core=0.3.3
   - jupyter_core=4.4.0
-  - jupyter_highlight_selected_word=0.2.0
-  - jupyter_latex_envs=1.4.4
   - jupyterlab=1.0.4
   - jupyterlab_server=1.0.0
   - keras=2.2.4
@@ -84,9 +82,9 @@ dependencies:
   - lazy-object-proxy=1.4.1
   - libblas=3.8.0
   - libcblas=3.8.0
-  - libedit=3.1.20170329
+  - libedit=3.1.20181209
   - libffi=3.2.1
-  - libgcc-ng=8.2.0
+  - libgcc-ng=9.1.0
   - libgfortran-ng=7.3.0
   - libgpuarray=0.7.6
   - libiconv=1.15
@@ -95,27 +93,28 @@ dependencies:
   - libpng=1.6.37
   - libprotobuf=3.9.0
   - libsodium=1.0.17
-  - libstdcxx-ng=8.2.0
+  - libstdcxx-ng=9.1.0
   - libuuid=2.32.1
   - libxcb=1.13
   - libxml2=2.9.9
-  - libxslt=1.1.32
   - logilab-common=1.4.2
-  - lxml=4.4.0
   - mako=1.0.14
+  - markupsafe=1.1.1
   - marshmallow=2.18.0
   - marshmallow-jsonapi=0.21.1
-  - matplotlib=3.1.0
+  - matplotlib=3.1.1
+  - matplotlib-base=3.1.1
   - mccabe=0.6.1
   - mistune=0.8.4
   - more-itertools=7.2.0
+  - mypy=0.720
+  - mypy_extensions=0.4.1
   - nbconvert=5.5.0
   - nbformat=4.4.0
   - ncurses=6.1
-  - ndg-httpsclient=0.5.1
   - notebook=6.0.0
   - numpy=1.17.0
-  - openssl=1.0.2r
+  - openssl=1.1.1c
   - packaging=19.0
   - pandas=0.25.0
   - pandoc=2.7.3
@@ -124,32 +123,32 @@ dependencies:
   - parso=0.5.1
   - pathtools=0.1.2
   - patsy=0.5.1
-  - pcre=8.43
+  - pbr=5.4.1
+  - pcre=8.41
   - pexpect=4.7.0
   - pickleshare=0.7.5
-  - pip=18.1
+  - pip=19.2.1
   - pluggy=0.12.0
   - prometheus_client=0.7.1
   - prompt_toolkit=2.0.9
   - protobuf=3.9.0
+  - psutil=5.6.3
   - pthread-stubs=0.4
   - ptyprocess=0.6.0
   - py=1.8.0
   - pyasn1=0.4.6
   - pycodestyle=2.5.0
   - pycparser=2.19
+  - pydocstyle=2.1.1
   - pyflakes=2.1.1
   - pygments=2.4.2
   - pygpu=0.7.6
-  - pyinstrument=3.0.3
-  - pyinstrument_cext=0.2.2
   - pyjwt=1.7.1
   - pylint=2.3.1
   - pylint-flask=0.6
   - pylint-plugin-utils=0.5
   - pymysql=0.9.3
   - pynacl=1.3.0
-  - pyopenssl=19.0.0
   - pyparsing=2.4.2
   - pyqt=5.9.2
   - pyrsistent=0.15.4
@@ -162,66 +161,117 @@ dependencies:
   - pytest-remotedata=0.3.1
   - pytest-runner=5.1
   - pytest-watch=4.1.0
-  - python=3.6.6
-  - python-annoy=1.14.0
+  - python=3.6.9
+  - python-annoy=1.16.0
+  - python-dateutil=2.8.0
   - python-editor=1.0.4
   - pytz=2019.2
   - pyyaml=5.1.2
   - pyzmq=18.0.2
-  - qt=5.9.6
+  - qt=5.9.7
   - readline=7.0
   - scipy=1.3.0
   - seaborn=0.9.0
   - send2trash=1.5.0
-  - setuptools=40.6.2
+  - setuptools=41.0.1
   - sip=4.19.8
-  - sqlite=3.25.3
+  - six=1.12.0
+  - smmap2=2.0.5
+  - snowballstemmer=1.9.0
+  - sqlite=3.29.0
   - sqlparse=0.3.0
   - sshtunnel=0.1.5
   - statsmodels=0.10.1
+  - stevedore=1.30.1
   - tensorboard=1.10.0
   - tensorflow=1.10.0
   - termcolor=1.1.0
   - terminado=0.8.2
   - testpath=0.4.2
   - theano=1.0.3
-  - tk=8.6.8
-  - toolz=0.10.0
+  - tk=8.6.9
+  - toml=0.10.0
   - traitlets=4.3.2
   - typed-ast=1.4.0
+  - typing_extensions=3.7.4
+  - vulture=1.0
   - waitress=1.3.0
   - watchdog=0.9.0
   - wcwidth=0.1.7
   - webencodings=0.5.1
-  - wheel=0.32.3
+  - wheel=0.33.4
   - wrapt=1.11.2
   - wtforms=2.2.1
   - xorg-libxau=1.0.9
   - xorg-libxdmcp=1.1.3
   - xz=5.2.4
   - yaml=0.1.7
+  - yapf=0.28.0
   - zeromq=4.3.2
   - zipp=0.5.2
   - zlib=1.2.11
   - pip:
+    - alembic==0.9.10
+    - amqp==2.5.0
     - apache-airflow[crypto,celery,postgres,jdbc,mysql,ssh,s3,password,google_auth]==1.10.3
-    - arrow==0.12.1
-    - binaryornot==0.4.4
+    - babel==2.7.0
+    - billiard==3.5.0.5
+    - boto3==1.7.84
+    - botocore==1.10.84
+    - celery==4.1.1
     - chardet==3.0.4
-    - click==6.7
-    - cookiecutter==1.6.0
+    - configparser==3.5.3
+    - croniter==0.3.30
+    - dill==0.2.9
+    - docutils==0.15.2
+    - flask-appbuilder==1.12.3
+    - flask-babel==0.12.2
+    - flask-bcrypt==0.7.1
+    - flask-caching==1.3.3
+    - flask-oauthlib==0.9.5
+    - flask-openid==1.2.5
+    - flask-swagger==0.2.13
+    - flask-wtf==0.14.2
+    - flower==0.9.3
+    - funcsigs==1.0.0
     - future==0.16.0
-    - idna==2.7
+    - iso8601==0.1.12
+    - jaydebeapi==1.1.1
     - jinja2==2.10
-    - jinja2-time==0.2.0
-    - markupsafe==1.0
-    - poyo==0.4.1
+    - jmespath==0.9.4
+    - jpype1==0.7.0
+    - json-merge-patch==0.2
+    - kombu==4.6.3
+    - lockfile==0.12.2
+    - lxml==4.4.0
+    - markdown==2.6.11
+    - mysqlclient==1.3.14
+    - oauthlib==2.1.0
+    - ordereddict==1.1
+    - pendulum==1.4.4
+    - psycopg2==2.7.7
     - psycopg2-binary==2.8.3
-    - python-dateutil==2.7.3
+    - pysftp==0.2.9
+    - python-daemon==2.1.2
+    - python3-openid==3.1.0
+    - pytzdata==2019.2
     - redis==3.3.4
-    - requests==2.19.1
-    - six==1.11.0
-    - urllib3==1.23
-    - whichcraft==0.4.1
-prefix: /opt/conda/envs/env
+    - requests==2.22.0
+    - requests-oauthlib==1.1.0
+    - s3transfer==0.1.13
+    - setproctitle==1.1.10
+    - sqlalchemy==1.2.19
+    - sshuttle==0.78.5
+    - tabulate==0.8.3
+    - tenacity==4.12.0
+    - text-unidecode==1.2
+    - thrift==0.11.0
+    - tornado==5.1.1
+    - tzlocal==2.0.0
+    - unicodecsv==0.14.1
+    - urllib3==1.25.3
+    - vine==1.3.0
+    - werkzeug==0.14.1
+    - zope-deprecation==4.4.0
+prefix: /opt/conda/envs/inference
 
