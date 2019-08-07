@@ -74,7 +74,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 
-COPY conda.yml /environment.yml
+COPY conda-production.yml /environment.yml
 RUN groupadd -g ${GROUP_ID} airflow \
     && useradd -u ${USER_ID} -ms /bin/bash -d ${AIRFLOW_USER_HOME} -g airflow airflow \
     && usermod -aG sudo airflow \
