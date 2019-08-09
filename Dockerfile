@@ -30,7 +30,7 @@ ENV LC_ALL en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
 ENV LC_MESSAGES en_US.UTF-8
 
-ENV PATH /opt/conda/envs/inference/bin:/opt/conda/bin:$PATH
+ENV PATH /opt/conda/envs/build/bin:/opt/conda/bin:$PATH
 
 RUN set -ex \
     && buildDeps=' \
@@ -74,7 +74,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 
-COPY conda-production.yml /environment.yml
+COPY conda/build2.lock.yml /environment.yml
 RUN groupadd -g ${GROUP_ID} airflow \
     && useradd -u ${USER_ID} -ms /bin/bash -d ${AIRFLOW_USER_HOME} -g airflow airflow \
     && usermod -aG sudo airflow \
@@ -84,7 +84,7 @@ RUN groupadd -g ${GROUP_ID} airflow \
 RUN conda init bash \
     && su - airflow -c 'conda init bash' \
     && echo '# Always activate conda' >> ~/.bashrc \
-    && echo '. /opt/conda/bin/activate inference' >> ~/.bashrc \
+    && echo '. /opt/conda/bin/activate build' >> ~/.bashrc \
     && . ~/.bashrc \
     && pip install -U pip setuptools wheel \
     && rm -rf \
@@ -98,11 +98,9 @@ COPY scripts/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
 RUN echo '# Always activate conda' >> ${AIRFLOW_USER_HOME}/.bashrc \
-    && echo '. /opt/conda/bin/activate inference' >> ${AIRFLOW_USER_HOME}/.bashrc
+    && echo '. /opt/conda/bin/activate build' >> ${AIRFLOW_USER_HOME}/.bashrc
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 RUN echo '%sudo  ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers
-
-EXPOSE 8080 5555 8793 8888 9999 9090 9100 9103 9107 8100 8103 8107
 
 USER airflow
 WORKDIR ${AIRFLOW_USER_HOME}
