@@ -65,7 +65,6 @@ dependencies:
   - geographiclib=1.49
   - geopy=1.20.0
   - gettext=0.19.8.1
-  - giflib=5.1.9
   - glib=2.58.3
   - gmp=6.1.2
   - gnutls=3.6.5
@@ -224,7 +223,6 @@ dependencies:
   - theano=1.0.3
   - tk=8.6.9
   - toml=0.10.0
-  - toolchain=2.4.0
   - tornado=6.0.3
   - traitlets=4.3.2
   - typed-ast=1.4.0
